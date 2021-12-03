@@ -8,11 +8,11 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.6.0
+#       jupytext_version: 1.13.2
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python (Reflexer)
 #     language: python
-#     name: python3
+#     name: python-reflexer
 # ---
 
 # %% [markdown]
@@ -114,34 +114,34 @@ def group_plot(df, run):
     
     fig = make_subplots(rows=5, cols=3, start_cell="top-left", vertical_spacing=0.06, 
                         horizontal_spacing=0.06,
-                        subplot_titles=["OHM/USD","Kp rate(blue), Ki rate(red)", "Redemption Rate", 
+                        subplot_titles=["YFI/USD","Kp rate(blue), Ki rate(red)", "Redemption Rate", 
                                         "VOLT/USD", "Error",  "Rate Trader balances, VOLT(purple), USD(green)",
-                                        "Rate APY", "Error Integral", "OHM Leverager Collateral",
+                                        "Rate APY", "Error Integral", "YFI Leverager Collateral",
                                         "Total Debt", "Total Collateral", "Total C-Ratio",
-                                        "VOLT/OHM"])
+                                        "VOLT/YFI"])
    
     eth_usd = px.line(
             df.query(f'run == {run}'),
-            title=f"OHM/USD",
+            title=f"YFI/USD",
             x="timestamp",
             color="run",
             color_discrete_sequence=["blue"],
             labels={"run": ""},
             y=["eth_price"]
         )
-    eth_usd.data[0].name = "OHM/USD"
+    eth_usd.data[0].name = "YFI/USD"
     eth_usd.update_layout(title_x=0.5)
     
     rai_eth = px.line(
             df.query(f'run == {run}'),
-            title=f"VOLT/OHM",
+            title=f"VOLT/YFI",
             x="timestamp",
             color="run",
             color_discrete_sequence=["green"],
             labels={"run": ""},
             y=["rai_eth"]
         )
-    rai_eth.data[0].name = "VOLT/OHM"
+    rai_eth.data[0].name = "VOLT/YFI"
     rai_eth.update_layout(title_x=0.5)
 
     rai_usd = px.line(
@@ -165,22 +165,22 @@ def group_plot(df, run):
 
     leverager_collateral = px.line(
             df.query(f'run == {run}'),#.query(f'khow == 7e-14'),
-            title=f"OHM Leverager Collateral",
+            title=f"YFI Leverager Collateral",
             x="timestamp",
             color_discrete_sequence=['red'],
             y=['eth_leverager_collateral']
         )
-    leverager_collateral.data[0].name = "OHM Leverager Collateral"
+    leverager_collateral.data[0].name = "YFI Leverager Collateral"
     leverager_collateral.update_layout(title_x=0.5)
 
     leverager_collateral_diff = px.line(
             df.query(f'run == {run}'),#.query(f'khow == 7e-14'),
-            title=f"OHM Leverager Collateral Diff",
+            title=f"YFI Leverager Collateral Diff",
             x="timestamp",
             color_discrete_sequence=['red'],
             y=['eth_leverager_collateral_diff']
         )
-    leverager_collateral_diff.data[0].name = "OHM Leverager Collateral Diff"
+    leverager_collateral_diff.data[0].name = "YFI Leverager Collateral Diff"
     leverager_collateral_diff.update_layout(title_x=0.5)
 
     rate_trader = px.line(
@@ -243,12 +243,12 @@ def group_plot(df, run):
 
     eth_leverager_cratio = px.line(
             df.query(f'run == {run}'),
-            title=f"OHM Leverager C-ratio",
+            title=f"YFI Leverager C-ratio",
             x="timestamp",
             color_discrete_sequence=['blue'],
             y=['eth_leverager_cratio']
         )
-    eth_leverager_cratio.data[0].name = "OHM Leverager C-ratio"
+    eth_leverager_cratio.data[0].name = "YFI Leverager C-ratio"
     eth_leverager_cratio.update_layout(title_x=0.5)
     
     

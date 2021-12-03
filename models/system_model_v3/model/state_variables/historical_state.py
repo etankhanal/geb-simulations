@@ -3,11 +3,10 @@ import numpy as np
 """Retrieve presimulated chain actions such as eth price, token swapping, liquidity demand and such."""
 
 #eth_price_df = pd.read_csv('models/system_model_v3/data/eth_values_gold.csv.gz', 
-#eth_price_df = pd.read_csv('models/system_model_v3/data/ohm_values_mc.csv.gz', 
-#eth_price_df = pd.read_csv('models/system_model_v3/data/eth_values_mc.csv.gz', 
-#eth_price_df = pd.read_csv('models/system_model_v3/data/ohm_values_mc.csv.gz', 
-eth_price_df = pd.read_csv('models/system_model_v3/data/eth_values_mc.csv.gz', 
-                           compression='gzip',
+# eth_price_df = pd.read_csv('models/system_model_v3/data/eth_values_mc.csv.gz', 
+# eth_price_df = pd.read_csv('models/system_model_v3/data/ohm_values_mc.csv.gz', 
+eth_price_df = pd.read_csv('notebooks/Stochastic_Generators/data/yfi_values_mc.csv',
+                           # compression='gzip',
                            index_col=0)
 
 # Set the initial ETH price state
